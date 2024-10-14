@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App</title>
+</head>
+<body>
+    <table id="board">
+    </table>
+    <button id="button">Change value</button>
+    <script>
+        let arr2 = [
+            [0,0,0,0,0],
+            [0,0,0,0,0],
+            [0,0,0,0,0],
+            [0,0,0,0,0],
+            [0,0,0,0,0]
+        ]
+        function ToBoard(arr2) {
+            let s = "";
+            for (let i = 0; i < arr2.length; i++) {
+                s += "<tr>";
+                for (let j = 0; j < arr2[i].length; j++) {
+                    s += `<td>${arr2[i][j]}</td>`;
+                }
+                s += "</tr>";
+            }
+            document.getElementById("board").innerHTML = s;
+        }
+        ToBoard(arr2);
+        
+        function ChangeValue() {
+            let row = parseInt(prompt("Chỉnh giá trị hàng: "));
+            let col = parseInt(prompt("Chỉnh giá trị cột: "));
+            let value = parseInt(prompt("Chỉnh sang giá trị: "));
+            arr2[--row][--col] = value;
+            ToBoard(arr2);
+        }
+        document.getElementById("button").addEventListener("click", ChangeValue);
+    </script>
+</body>
+</html>
